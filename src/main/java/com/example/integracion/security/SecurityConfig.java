@@ -52,8 +52,6 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests() 
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/security/language/**").permitAll()
-                
                 .requestMatchers(HttpMethod.POST, "/api/security/country/create").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.GET,"/api/security/country/get").hasAnyAuthority("ADMIN" , "USER")
                 .requestMatchers(HttpMethod.GET,"/api/security/country/getId/**").hasAnyAuthority("ADMIN")
@@ -65,12 +63,12 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET,"/api/security/payment/getId/**").hasAnyAuthority("ADMIN")
                 .requestMatchers(HttpMethod.DELETE,"/api/security/payment/delete/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/security/payment/update/**").hasAuthority("ADMIN")
-                /*
+                
                 .requestMatchers(HttpMethod.POST, "/api/security/language/create").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.GET,"/api/security/language/get").hasAnyAuthority("ADMIN" , "USER")
                 .requestMatchers(HttpMethod.GET,"/api/security/language/getId/**").hasAnyAuthority("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/security/laguage/update/**").hasAuthority("ADMIN")
-                      */     
+                       
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
