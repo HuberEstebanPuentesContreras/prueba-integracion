@@ -20,29 +20,29 @@ import com.example.integracion.services.CountryService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/security/country")
+@RequestMapping("/api/security/country/")
 public class CountryController {
 
 	@Autowired
     private CountryService service;
 
-    @GetMapping
+    @GetMapping("get")
     public List<Country> all() {
         return service.all();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("getId/{id}")
     public Optional<Country> show(@PathVariable Short id) {
         return service.findById(id);
     }
 
-    @PostMapping
+    @PostMapping("create")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Country save(@RequestBody Country country) {
         return service.save(country);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("update/{id}")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Country update(@PathVariable Short id, @RequestBody Country country) {
         Optional<Country> op = service.findById(id);

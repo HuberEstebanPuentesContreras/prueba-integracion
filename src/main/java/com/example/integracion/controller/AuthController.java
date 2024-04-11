@@ -27,7 +27,7 @@ import java.util.Collections;
 
 @RestController
 @RequestMapping("/api/auth/")
-public class RestControllerAuth {
+public class AuthController {
 
 	private AuthenticationManager authenticationManager;
     private PasswordEncoder passwordEncoder;
@@ -36,7 +36,7 @@ public class RestControllerAuth {
     private JwtGenerador jwtGenerador;
     
     @Autowired
-    public RestControllerAuth(AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, IRolesRepository rolesRepository, IUsuariosRepository usuariosRepository, JwtGenerador jwtGenerador) {
+    public AuthController(AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, IRolesRepository rolesRepository, IUsuariosRepository usuariosRepository, JwtGenerador jwtGenerador) {
         this.authenticationManager = authenticationManager;
         this.passwordEncoder = passwordEncoder;
         this.rolesRepository = rolesRepository;

@@ -20,29 +20,29 @@ import com.example.integracion.services.LanguageService;
 
 @CrossOrigin(origins ="*")
 @RestController
-@RequestMapping("api/security/language")
+@RequestMapping("/api/security/language/")
 public class LanguageController {
 
 	@Autowired
 	private LanguageService service;
 	
-	@GetMapping
+	@GetMapping("get")
 	public List<Language> all() {
 		return service.all();
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("getId/{id}")
 	public Optional<Language> show(@PathVariable Byte id){
 		return service.findById(id);
 	}
 
-	@PostMapping
+	@PostMapping("create")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Language save(@RequestBody Language language) {
 		return service.save(language);
 	}
 	
-	@PutMapping("{id}")
+	@PutMapping("update/{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Language update(@PathVariable Byte id, @RequestBody Language language) {
 		Optional<Language> op = service.findById(id);

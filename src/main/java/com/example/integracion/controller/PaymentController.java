@@ -21,29 +21,29 @@ import com.example.integracion.services.PaymentService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/security/payment")
+@RequestMapping("/api/security/payment/")
 public class PaymentController {
 
 	@Autowired
 	private PaymentService service;
 	
-	@GetMapping
+	@GetMapping("get")
 	public List<Payment> all(){
 		return service.all();
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("getId/{id}")
 	public Optional<Payment> show(@PathVariable Short id){
 		return service.findById(id);
 	}
 
-	@PostMapping
+	@PostMapping("create")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Payment save(@RequestBody Payment payment) {
 		return service.save(payment);
 	}
 	
-	@PutMapping("{id}")
+	@PutMapping("update/{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Payment update(@PathVariable Short id, @RequestBody Payment payment) {
 		Optional<Payment> op = service.findById(id);
@@ -60,7 +60,7 @@ public class PaymentController {
 		return payment;
 	}
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping("delete/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Short id) {
 		service.delete(id);
